@@ -1,11 +1,13 @@
-import { createStore } from 'redux'
+import { createStore,applyMiddleware ,compose } from 'redux'
 import rootReducer from '../reducers'
-
+import thunk from 'redux-thunk'
 //第二步：根据计算规则生成 store
-export default function configureStore(initialState) {
-    const store = createStore(rootReducer, initialState,
-        // 触发 redux-devtools
-        window.devToolsExtension ? window.devToolsExtension() : undefined
+export default function configureStore() {
+    const middleware = applyMiddleware(...[thunk]);
+    const store = createStore(rootReducer,compose(
+        middleware,
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+        )
     )
     return store
 }

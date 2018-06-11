@@ -1,20 +1,26 @@
 import React from "react";
-import Header from '../../components/Header'
-import Carouse from './subpage/Carouse'
 import {Link} from 'react-router'
-import C from './subpage/C'
-
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import * as userinfoActions from '../../actions/userinfo'
+import { DatePicker, List } from 'antd-mobile';
+
+import C from './subpage/C'
+import Header from '../../components/Header'
+import FooterBar from '../../components/FooterBar'
+
+import * as userinfoActions from '../../actions/UserinfoAction'
+
+const nowTimeStamp = Date.now();
+const now = new Date(nowTimeStamp);
 
 class Hello extends React.Component{
     constructor(props,context){
         super(props,context)
         this.state = {
-            now:Date.now()
+            date: now
         }
+
     }
 
     handleClick(e){
@@ -43,25 +49,39 @@ class Hello extends React.Component{
             city:'洛阳'
         })
     }
+    dateChange(date){
+       this.setState({
+           date:date
+       })
+    }
 
     render(){
         return (
             <div>
-                <Header titleName="Hello"></Header>
-                <Carouse></Carouse>
+                <Header titleName="首页"></Header>
                 <p>{this.state.now}</p>
                 <a onClick={this.handleClick.bind(this)}>点我q</a>
                 <br/>
                 <Link to="/list">to list</Link>
 
 
-                <p>{this.props.userinfo.userid}</p>
-                <p>{this.props.userinfo.city}</p>
+                <p>{this.props.userinfoStore.userid}</p>
+                <p>{this.props.userinfoStore.city}</p>
                 <C actions={this.props.userinfoActions}></C>
 
                 <button onClick={this.changeState.bind(this)}>我自己改</button>
 
+                <DatePicker
+                    mode="date"
+                    title="Select Date"
+                    extra="Optional"
+                    value={this.state.date}
+                    onChange={this.dateChange.bind(this)}
+                >
+                    <List.Item arrow="horizontal">Date</List.Item>
+                </DatePicker>
 
+                <FooterBar></FooterBar>
             </div>
         )
     }
@@ -69,9 +89,8 @@ class Hello extends React.Component{
 
 //这样的话，本函数返回的userinfo就会变成Hello组件的一个props属性
 function mapStateToProps(state){
-    //这里的state就是rootReducer中定义的state
     return{
-        userinfo:state.userinfo
+        userinfoStore:state.userinfoReducer
     }
 }
 

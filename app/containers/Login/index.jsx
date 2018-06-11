@@ -1,6 +1,6 @@
 import React from 'react'
 
-import post from '../../fetch/post'
+import Fetch from '../../fetch/fetch'
 
 class Login extends React.Component{
     constructor(props){
@@ -27,10 +27,8 @@ class Login extends React.Component{
         }
     }
     login(){
-        var result = post("http://localhost:8081/jwt/login")
-        result.then(res => {
-            return res.text();
-        }).then( token => {
+        var result = Fetch.postNoAuth("jwt/login")
+        result.then( token => {
             console.log(token)
         })
     }

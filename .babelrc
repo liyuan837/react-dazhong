@@ -1,5 +1,6 @@
 {
-  "presets": ["react", "es2015"],
+  "presets": ["react", "es2015","stage-0"],
+
   "env": {
     "dev": {
         "plugins": [["react-transform", {
@@ -10,5 +11,6 @@
            }]
          }]]
     }
-  }
+  },
+  "plugins": [["import", { "style": "css", "libraryName": "antd-mobile" }]]
 }

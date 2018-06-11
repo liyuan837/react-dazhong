@@ -1,5 +1,4 @@
 import React from 'react'
-import '@/containers/Hello/subpage/Carouse/Carouse.less'
 
 class C extends React.Component{
     render(){
