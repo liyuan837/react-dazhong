@@ -55,7 +55,7 @@ module.exports = {
 
         // 打开浏览器
         new OpenBrowserPlugin({
-          url: 'http://localhost:8000'
+          url: 'http://172.19.4.13:8000'
         }),
 
         // 可在业务 js 代码中使用 __DEV__ 判断是否是dev模式（dev模式下可以提示错误、测试报告等, production模式不提示）
@@ -74,7 +74,7 @@ module.exports = {
           }
         },
         //开发环境下启动的临时服务器IP+端口
-        host:'127.0.0.1',
+        host:'172.19.4.13',
         port:8000,
 
         contentBase: "./public", //本地服务器所加载的页面所在的目录

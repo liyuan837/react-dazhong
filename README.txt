@@ -19,3 +19,7 @@ webpack.production.config.js：是在生产环境下webpack打包采用的配置
 
 蚂蚁金服UI：
 https://mobile.ant.design/docs/react/introduce-cn
+
+本框架适用于移动端网站设计前端，包含如下技术：
+1、react + redux + react-router
+2、antd-mobile

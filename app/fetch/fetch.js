@@ -1,6 +1,8 @@
 import * as Constants from '../constants/Constants'
 import {obj2params} from '../util/CommonUtil'
 
+import {Toast} from 'antd-mobile'
+
 class Fetch {
     static post(url, params) {
         return requestPost(url, params, 'post');
@@ -29,7 +31,6 @@ function requestPost(url, params, method,flag) {
     if(!flag){
         delete headersPara.Authorization;
     }
-
     var result = fetch(server+url, {
         method: method,
         credentials: 'include',
@@ -40,6 +41,8 @@ function requestPost(url, params, method,flag) {
         return res.json();
     }).catch(error => {
         console.trace('系统错误: ' + error + ' , ' + JSON.stringify(error));
+        Toast.fail(JSON.stringify(error),2)
+        // throw error
     });
 }
 
@@ -68,6 +71,7 @@ function requestGet(url, params, method,flag) {
         return res.json();
     }).catch(error => {
         console.trace('系统错误: ' + error + ' , ' + JSON.stringify(error));
+        Toast.fail(JSON.stringify(error),2)
     });
 }
 

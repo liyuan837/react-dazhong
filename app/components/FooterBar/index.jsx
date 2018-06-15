@@ -1,23 +1,34 @@
 import React from 'react'
-import { TabBar } from 'antd-mobile';
+import { TabBar,Icon } from 'antd-mobile';
+import { hashHistory } from 'react-router'
+import './style.less'
+
+import LocalStore from '../../util/LocalStore'
 
 class FooterBar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'tabBar1',
-            hidden: false
+            selectedTab: 'tabBar1'
         };
     }
 
+    componentDidMount(){
+
+    }
+
+    componentWillMount(){
+
+    }
+
     render(){
+
         return(
-            <div style={{ position: 'fixed', width: '100%', bottom: 0 }}>
+            <div style={{ marginTop:'50px' }}>
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
                     barTintColor="white"
-                    hidden={this.state.hidden}
                 >
                     <TabBar.Item
                         title="Life"
@@ -40,24 +51,22 @@ class FooterBar extends React.Component{
                             this.setState({
                                 selectedTab: 'tabBar1',
                             });
+                            LocalStore.setItem("selectedTab","tabBar1")
+                            hashHistory.push('/life')
                         }}
                         data-seed="logId"
                     >
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
-                            />
+                            <div style={{ width: '22px', height: '22px'}}>
+                                <Icon type="check-circle-o"></Icon>
+                            </div>
                         }
                         selectedIcon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
-                            />
+                            <div style={{ width: '22px', height: '22px'}}>
+                                <Icon type="check-circle"></Icon>
+                            </div>
                         }
                         title="Koubei"
                         key="Koubei"
@@ -67,6 +76,7 @@ class FooterBar extends React.Component{
                             this.setState({
                                 selectedTab: 'tabBar2',
                             });
+                            LocalStore.setItem("selectedTab","tabBar2")
                         }}
                         data-seed="logId1"
                     >
@@ -94,19 +104,32 @@ class FooterBar extends React.Component{
                             this.setState({
                                 selectedTab: 'tabBar3',
                             });
+                            LocalStore.setItem("selectedTab","tabBar3")
+                            hashHistory.push('/friend')
                         }}
                     >
                     </TabBar.Item>
                     <TabBar.Item
-                        icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-                        selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+                        icon={
+                            <div style={{width:22,height:22}}>
+                                <i className='icon-star-o'></i>
+                            </div>
+                        }
+                       selectedIcon={
+                           <div style={{width:22,height:22}}>
+                               <i className="icon-star"></i>
+                           </div>
+                        }
                         title="My"
                         key="my"
                         selected={this.state.selectedTab === 'tabBar4'}
                         onPress={() => {
+                            LocalStore.setItem("selectedTab","tabBar4")
                             this.setState({
                                 selectedTab: 'tabBar4',
                             });
+
+                            this.props.click4();
                         }}
                     >
                     </TabBar.Item>
