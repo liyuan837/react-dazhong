@@ -12,15 +12,9 @@ class FooterBar extends React.Component{
             selectedTab: 'tabBar1'
         };
     }
-
     componentDidMount(){
 
     }
-
-    componentWillMount(){
-
-    }
-
     render(){
 
         return(
@@ -77,6 +71,7 @@ class FooterBar extends React.Component{
                                 selectedTab: 'tabBar2',
                             });
                             LocalStore.setItem("selectedTab","tabBar2")
+                            hashHistory.push('/koubei')
                         }}
                         data-seed="logId1"
                     >

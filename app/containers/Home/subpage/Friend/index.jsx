@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom'
 import {connect} from 'react-redux'
-import SearchHeader from '../../../../components/SearchHeader'
+import SimpleHeader from '../../../../components/SimpleHeader'
 
 import { PullToRefresh, Button } from 'antd-mobile';
 
@@ -35,7 +35,7 @@ class Friend extends React.Component{
     render() {
         return (
             <div>
-                <SearchHeader titleName='Friend'></SearchHeader>
+                <SimpleHeader titleName='Friend'></SimpleHeader>
                 <PullToRefresh
                     damping={60}
                     ref={el => this.ptr = el}

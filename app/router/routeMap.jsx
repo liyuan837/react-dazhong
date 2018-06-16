@@ -11,6 +11,7 @@ import  Login from '../containers/Login'
 import Friend from '../containers/Home/subpage/Friend'
 import Life from '../containers/Home/subpage/Life'
 import Myhome from '../containers/Home/subpage/Myhome'
+import Koubei from '../containers/Home/subpage/Koubei'
 
 
 class RouteMap extends React.Component{
@@ -26,6 +27,7 @@ class RouteMap extends React.Component{
                     <Route component={Home}>
                         <IndexRoute component={Life}></IndexRoute>
                         <Route path="life" component={Life}></Route>
+                        <Route path="koubei" component={Koubei}></Route>
                         <Route path="friend" component={Friend}></Route>
                         <Route path="myhome" component={Myhome}></Route>
                     </Route>

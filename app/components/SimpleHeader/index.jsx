@@ -20,15 +20,10 @@ class SimpleHeader extends React.Component{
             <div style={{marginBottom:'45px'}}>
                 <NavBar
                     mode="dark"
-                    icon={<Icon type="left" onClick={this.back}/>}
 
                 >{this.props.titleName}</NavBar>
             </div>
         )
-    }
-
-    back = () =>{
-        window.history.back()
     }
 }
 
