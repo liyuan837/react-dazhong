@@ -1,9 +1,9 @@
+
+
 安装命令：
 (1)npm init
 (2)npm install webpack webpack-dev-server --save-dev
 (3)npm i react react-dom --save
-
-
 
 启动方式：
 webpack的script下的所有命令都需要用run关键字，除了start和test可以省略run；

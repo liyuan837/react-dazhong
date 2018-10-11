@@ -4,15 +4,18 @@ import {bindActionCreators} from "redux";
 import { Link } from 'react-router'
 import * as userinfoActions from "@/actions/UserinfoAction";
 
-import { DatePicker, List , SearchBar} from 'antd-mobile';
+import { DatePicker, List ,Carousel ,Grid } from 'antd-mobile';
 
 import C from '../C'
 import SearchHeader from '../../../../components/SearchHeader'
+
+import './style.less'
 
 const nowTimeStamp = Date.now();
 const now = new Date(nowTimeStamp);
 
 class Life extends React.Component{
+
     constructor(props,context){
         super(props,context)
         this.state = {
@@ -47,10 +50,33 @@ class Life extends React.Component{
     }
 
     render(){
+        const {
+            carousels: {
+                value = ['http://www.dyjkglass.com/qiangu.png','http://www.dyjkglass.com/qiangu.png']
+            } = {}
+        } = this.props;
+
+        const data = Array.from(new Array(9)).map((_val, i) => ({
+            icon: 'http://www.dyjkglass.com/qiangu.png' +
+            '',
+            text: `name${i}`,
+        }));
+
         return (
             <div>
                 <SearchHeader titleName="Life"></SearchHeader>
-                <SearchBar placeholder="Search" maxLength={8} />
+                <div style={{marginTop:'45px'}}>
+                    {/*走马灯*/}
+                    <Carousel className="my-carousel" autoplay={true} infinite>
+                        {
+                            value.map((item,index) => (
+                                <img key={index} src={item}></img>
+                            ))
+                        }
+                    </Carousel>
+                     {/*九宫格*/}
+                    <Grid data={data} hasLine={true} isCarousel={true} activeStyle={false} columnNum={4} square={true} />
+                </div>
                 <Link to="/list">to list</Link>
                 <p>{this.props.userinfoStore.userid}</p>
                 <p>{this.props.userinfoStore.city}</p>

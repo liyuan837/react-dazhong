@@ -29,7 +29,6 @@ class SearchHeader extends React.Component{
                     mode="dark"
                     icon={<Icon type="left" onClick={this.back}/>}
                     rightContent={[
-                        <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
                         <Popover key="1" mask
                                  overlayClassName="fortest"
                                  overlayStyle={{ color: 'currentColor' }}
