@@ -26,7 +26,7 @@ class SearchHeader extends React.Component{
         return(
             <div>
                 <NavBar
-                    mode="dark"
+                    mode="light"
                     icon={<Icon type="left" onClick={this.back}/>}
                     rightContent={[
                         <Popover key="1" mask
